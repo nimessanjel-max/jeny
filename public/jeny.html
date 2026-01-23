@@ -109,13 +109,14 @@
             margin: 30px 20px;
             font-size: 1.5rem;
             font-style: italic;
-            animation: fadeIn 1s ease-out 1.2s both;
+            animation: fadeIn 0.5s ease-out 0.5s both;
             padding: 15px 25px;
             background: rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             backdrop-filter: blur(5px);
             max-width: 800px;
             line-height: 1.5;
+            display: none;
         }
 
         .intro-icons span {
@@ -186,6 +187,15 @@
             animation-delay: 0.8s;
         }
 
+
+
+        .sub-btn {
+            background-color: rgb(241, 134, 152);
+            padding: 10px;
+        }
+
+
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .intro h1 {
@@ -224,7 +234,8 @@
         <h1>Together</h1>
         <h1>My Love ❤️</h1>
 
-        <div class="nickname">
+        <button class="btn sub-btn" id="sub-btn" onclick="subBtnClick()">Surprise Message 😈</button>
+        <div class="nickname" id="nickname">
             (and also little monku donku panda crocodile hibernator sweet little cutie pretty princieeeeeee)
         </div>
 
@@ -346,6 +357,12 @@
                 });
             }
         });
+
+
+        function subBtnClick() {
+            document.getElementById("sub-btn").style.display = "none";
+            document.getElementById("nickname").style.display = "block";
+        }
     </script>
 </body>
 
