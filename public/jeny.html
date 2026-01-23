@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <!-- Fixed Bootstrap Icons link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!-- Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
 
     <style>
         @keyframes heart-rotate {
@@ -34,6 +35,7 @@
                 padding: 40px;
                 background-color: rgb(209, 160, 168);
                 position: relative;
+                overflow: hidden;
             }
 
             .intro h1 {
@@ -55,16 +57,16 @@
             }
 
             .intro-icons span:nth-child(1) {
-                top: 40%;
-                left: 30%;
+                top: 15%;
+                left: 10%;
                 font-size: 40px;
                 --start-deg: -30deg;
                 --end-deg: -10deg;
             }
 
             .intro-icons span:nth-child(2) {
-                top: 60%;
-                left: 45%;
+                top: 30%;
+                left: 15%;
                 font-size: 60px;
                 --start-deg: -30deg;
                 --end-deg: 0deg;
@@ -82,15 +84,15 @@
 
             .intro-icons span:nth-child(4) {
                 top: 10%;
-                right: 40%;
+                right: 20%;
                 font-size: 50px;
                 --start-deg: 60deg;
                 --end-deg: 90deg;
             }
 
             .intro-icons span:nth-child(5) {
-                bottom: 50%;
-                left: 30px;
+                bottom: 30%;
+                left: 20%;
                 font-size: 100px;
                 --start-deg: 30deg;
                 --end-deg: 60deg;
@@ -98,7 +100,7 @@
             }
 
             .intro-icons span:nth-child(6) {
-                top: 5%;
+                top: 30%;
                 right: 10%;
                 font-size: 100px;
                 --start-deg: 50deg;
@@ -113,6 +115,7 @@
                 --end-deg: 80deg;
                 animation-delay: 0.8s;
             }
+
         }
     </style>
 </head>
@@ -134,6 +137,44 @@
             <span class="bi bi-heart-fill"></span>
         </div>
     </section>
+
+
+    <script>
+        function fireConfetti() {
+            const duration = 5 * 1000; // 5 seconds
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            const interval = setInterval(function () {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+
+                // Bumper 1: Left side
+                confetti({
+                    ...defaults,
+                    particleCount,
+                    origin: { x: 0, y: 0.9 }, // 0 is left, 0.9 is near bottom
+                    angle: 60 // Shoots diagonally up-right
+                });
+
+                // Bumper 2: Right side
+                confetti({
+                    ...defaults,
+                    particleCount,
+                    origin: { x: 1, y: 0.9 }, // 1 is right, 0.9 is near bottom
+                    angle: 120 // Shoots diagonally up-left
+                });
+            }, 250);
+        }
+
+        // Run the celebration when the page loads
+        window.onload = fireConfetti;
+    </script>
 </body>
 
 </html>
