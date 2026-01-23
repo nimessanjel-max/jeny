@@ -1,11 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <style>
+        @keyframes heart-rotate {
+            0% {
+                transform: rotate(var(--start-deg));
+            }
+
+            50% {
+                transform: rotate(var(--end-deg));
+            }
+
+            100% {
+                transform: rotate(var(--start-deg));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .intro {
+                height: auto;
+                padding: 40px;
+                background-color: rgb(218, 136, 149);
+                position: relative;
+            }
+
+            .intro h1 {
+                color: rgb(216, 78, 101);
+                text-shadow: 1px 1px 1px pink;
+            }
+
+            .intro div {
+                color: rgb(189, 75, 94);
+                margin: 20px;
+            }
+
+            .intro-icons span {
+                color: rgba(242, 145, 163, 0.455);
+                position: absolute;
+                animation: heart-rotate 3s ease-in-out infinite;
+            }
+
+            .intro-icons span:nth-child(1) {
+                top: 40%;
+                left: 30%;
+                font-size: 40px;
+                --start-deg: -30deg;
+                --end-deg: -10deg;
+            }
+
+            .intro-icons span:nth-child(2) {
+                top: 60%;
+                left: 45%;
+                font-size: 60px;
+                --start-deg: -30deg;
+                --end-deg: 0deg;
+                animation-delay: 0.2s;
+            }
+
+            .intro-icons span:nth-child(3) {
+                bottom: 20%;
+                right: 10%;
+                font-size: 80px;
+                --start-deg: -60deg;
+                --end-deg: -30deg;
+                animation-delay: 0.4s;
+            }
+
+            .intro-icons span:nth-child(4) {
+                top: 10%;
+                right: 40%;
+                font-size: 50px;
+                --start-deg: 60deg;
+                --end-deg: 90deg;
+            }
+
+            .intro-icons span:nth-child(5) {
+                bottom: 50%;
+                left: 30px;
+                font-size: 100px;
+                --start-deg: 30deg;
+                --end-deg: 60deg;
+                animation-delay: 0.6s;
+            }
+
+            .intro-icons span:nth-child(6) {
+                top: 5%;
+                right: 10%;
+                font-size: 100px;
+                --start-deg: 50deg;
+                --end-deg: 20deg;
+            }
+
+            .intro-icons span:nth-child(7) {
+                bottom: 5%;
+                left: 10%;
+                font-size: 80px;
+                --start-deg: 50deg;
+                --end-deg: 80deg;
+                animation-delay: 0.8s;
+            }
+        }
+    </style>
 </head>
-<body>
-    
+
+<body class="container-fluid">
+    <section class="intro text-center">
+        <h1>Happy 4th</h1>
+        <h1>Valentines</h1>
+        <h1>Together</h1>
+        <h1>My love</h1>
+        <div>(and also little monku donku panda crocodile hibernator sweet little cutie pretty princieeeeeee)</div>
+        <div class="intro-icons">
+            <span class="bi bi-heart-fill"></span>
+            <span class="bi bi-heart-fill"></span>
+            <span class="bi bi-heart-fill"></span>
+            <span class="bi bi-heart-fill"></span>
+            <span class="bi bi-heart-fill"></span>
+            <span class="bi bi-heart-fill"></span>
+            <span class="bi bi-heart-fill"></span>
+        </div>
+    </section>
 </body>
+
 </html>
