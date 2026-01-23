@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Happy Valentine's Day!</title>
+
+    <!-- Fixed Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Fixed Bootstrap Icons link -->
@@ -13,8 +15,19 @@
     <!-- Confetti library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
-
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fdeff2;
+            overflow-x: hidden;
+        }
+
         @keyframes heart-rotate {
             0% {
                 transform: rotate(var(--start-deg));
@@ -29,104 +42,195 @@
             }
         }
 
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(var(--start-deg));
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(var(--end-deg));
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .intro {
+            min-height: 100vh;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #ffd6e0 0%, #ffb3c6 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .intro h1 {
+            color: #c9184a;
+            text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.5);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+            font-weight: bold;
+        }
+
+        .intro h1:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .intro h1:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .intro h1:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .intro h1:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .nickname {
+            color: #a4133c;
+            margin: 30px 20px;
+            font-size: 1.5rem;
+            font-style: italic;
+            animation: fadeIn 1s ease-out 1.2s both;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
+        .intro-icons span {
+            color: rgba(201, 24, 74, 0.7);
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1;
+        }
+
+
+        .intro-icons span:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            font-size: 40px;
+            --start-deg: -30deg;
+            --end-deg: -10deg;
+        }
+
+        .intro-icons span:nth-child(2) {
+            top: 60%;
+            left: 15%;
+            font-size: 60px;
+            --start-deg: -30deg;
+            --end-deg: 0deg;
+            animation-delay: 0.2s;
+        }
+
+        .intro-icons span:nth-child(3) {
+            bottom: 20%;
+            right: 10%;
+            font-size: 80px;
+            --start-deg: -60deg;
+            --end-deg: -30deg;
+            animation-delay: 0.4s;
+        }
+
+        .intro-icons span:nth-child(4) {
+            top: 10%;
+            right: 20%;
+            font-size: 50px;
+            --start-deg: 60deg;
+            --end-deg: 90deg;
+        }
+
+        .intro-icons span:nth-child(5) {
+            bottom: 30%;
+            left: 30px;
+            font-size: 100px;
+            --start-deg: 30deg;
+            --end-deg: 60deg;
+            animation-delay: 0.6s;
+        }
+
+        .intro-icons span:nth-child(6) {
+            top: 5%;
+            right: 5%;
+            font-size: 100px;
+            --start-deg: 50deg;
+            --end-deg: 20deg;
+        }
+
+        .intro-icons span:nth-child(7) {
+            bottom: 5%;
+            left: 10%;
+            font-size: 80px;
+            --start-deg: 50deg;
+            --end-deg: 80deg;
+            animation-delay: 0.8s;
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .intro {
-                height: 100vh;
-                padding: 40px;
-                background-color: rgb(209, 160, 168);
-                position: relative;
-                overflow: hidden;
-            }
-
             .intro h1 {
-                color: rgb(216, 78, 101);
-                text-shadow: 1px 1px 1px pink;
-                text-align: center;
-                font-size: 60px;
+                font-size: 2.5rem;
             }
 
-            .intro div {
-                color: rgb(189, 75, 94);
-                margin: 20px;
+            .nickname {
+                font-size: 1.2rem;
+                padding: 12px 20px;
+                margin: 20px 15px;
             }
 
             .intro-icons span {
-                color: rgba(249, 99, 126, 0.455);
-                position: absolute;
-                animation: heart-rotate 3s ease-in-out infinite;
+                font-size: 80% !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .intro h1 {
+                font-size: 2rem;
             }
 
-            .intro-icons span:nth-child(1) {
-                top: 15%;
-                left: 10%;
-                font-size: 40px;
-                --start-deg: -30deg;
-                --end-deg: -10deg;
+            .nickname {
+                font-size: 1rem;
+                padding: 10px 15px;
             }
 
-            .intro-icons span:nth-child(2) {
-                top: 30%;
-                left: 15%;
-                font-size: 60px;
-                --start-deg: -30deg;
-                --end-deg: 0deg;
-                animation-delay: 0.2s;
+            .intro-icons span {
+                font-size: 60% !important;
             }
-
-            .intro-icons span:nth-child(3) {
-                bottom: 20%;
-                right: 10%;
-                font-size: 80px;
-                --start-deg: -60deg;
-                --end-deg: -30deg;
-                animation-delay: 0.4s;
-            }
-
-            .intro-icons span:nth-child(4) {
-                top: 10%;
-                right: 20%;
-                font-size: 50px;
-                --start-deg: 60deg;
-                --end-deg: 90deg;
-            }
-
-            .intro-icons span:nth-child(5) {
-                bottom: 30%;
-                left: 20%;
-                font-size: 100px;
-                --start-deg: 30deg;
-                --end-deg: 60deg;
-                animation-delay: 0.6s;
-            }
-
-            .intro-icons span:nth-child(6) {
-                top: 30%;
-                right: 10%;
-                font-size: 100px;
-                --start-deg: 50deg;
-                --end-deg: 20deg;
-            }
-
-            .intro-icons span:nth-child(7) {
-                bottom: 5%;
-                left: 10%;
-                font-size: 80px;
-                --start-deg: 50deg;
-                --end-deg: 80deg;
-                animation-delay: 0.8s;
-            }
-
         }
     </style>
 </head>
 
-<body class="container-fluid">
+<body>
     <section class="intro">
         <h1>Happy 4th</h1>
-        <h1>Valentines</h1>
+        <h1>Valentine's</h1>
         <h1>Together</h1>
-        <h1>My love</h1>
-        <div>(and also little monku donku panda crocodile hibernator sweet little cutie pretty princieeeeeee)</div>
+        <h1>My Love ❤️</h1>
+
+        <div class="nickname">
+            (and also little monku donku panda crocodile hibernator sweet little cutie pretty princieeeeeee)
+        </div>
+
         <div class="intro-icons">
             <span class="bi bi-heart-fill"></span>
             <span class="bi bi-heart-fill"></span>
@@ -138,12 +242,18 @@
         </div>
     </section>
 
-
     <script>
+        // Enhanced confetti function
         function fireConfetti() {
-            const duration = 5 * 1000; // 5 seconds
+            const duration = 5 * 1000;
             const animationEnd = Date.now() + duration;
-            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+            const defaults = {
+                startVelocity: 30,
+                spread: 360,
+                ticks: 60,
+                zIndex: 0,
+                colors: ['#ff0000', '#ff4d4d', '#ff9999', '#ff66b2', '#ff3385']
+            };
 
             const interval = setInterval(function () {
                 const timeLeft = animationEnd - Date.now();
@@ -154,26 +264,91 @@
 
                 const particleCount = 50 * (timeLeft / duration);
 
-                // Bumper 1: Left side
+                // Left side confetti
                 confetti({
                     ...defaults,
                     particleCount,
-                    origin: { x: 0, y: 0.9 }, // 0 is left, 0.9 is near bottom
-                    angle: 60 // Shoots diagonally up-right
+                    origin: { x: 0, y: 0.9 },
+                    angle: 60
                 });
 
-                // Bumper 2: Right side
+                // Right side confetti
                 confetti({
                     ...defaults,
                     particleCount,
-                    origin: { x: 1, y: 0.9 }, // 1 is right, 0.9 is near bottom
-                    angle: 120 // Shoots diagonally up-left
+                    origin: { x: 1, y: 0.9 },
+                    angle: 120
                 });
+
+                // Center burst occasionally
+                if (Math.random() > 0.7) {
+                    confetti({
+                        ...defaults,
+                        particleCount: 20,
+                        origin: { x: 0.5, y: 0.5 },
+                        spread: 100
+                    });
+                }
             }, 250);
         }
 
-        // Run the celebration when the page loads
-        window.onload = fireConfetti;
+        // Show hidden message
+        function showMessage() {
+            const message = document.getElementById('specialMessage');
+            const btn = document.querySelector('.message-btn');
+
+            if (message.style.display === 'block') {
+                message.style.display = 'none';
+                btn.innerHTML = '<i class="bi bi-heart"></i> Click for a special message <i class="bi bi-heart"></i>';
+            } else {
+                message.style.display = 'block';
+                btn.innerHTML = '<i class="bi bi-heart-fill"></i> Hide Message <i class="bi bi-heart-fill"></i>';
+
+                // Trigger more confetti when message is shown
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#ff0000', '#ff4d4d', '#ff9999']
+                });
+            }
+        }
+
+        // Run confetti when page loads
+        window.onload = function () {
+            fireConfetti();
+
+            // Add click event to hearts for more interaction
+            document.querySelectorAll('.bi-heart-fill').forEach(heart => {
+                heart.addEventListener('click', function () {
+                    const rect = this.getBoundingClientRect();
+                    confetti({
+                        particleCount: 30,
+                        spread: 40,
+                        origin: {
+                            x: (rect.left + rect.width / 2) / window.innerWidth,
+                            y: (rect.top + rect.height / 2) / window.innerHeight
+                        },
+                        colors: ['#ff4d6d']
+                    });
+                });
+            });
+        };
+
+        // Additional confetti on click anywhere
+        document.addEventListener('click', function (e) {
+            if (Math.random() > 0.8) { // 20% chance on any click
+                confetti({
+                    particleCount: 15,
+                    spread: 50,
+                    origin: {
+                        x: e.clientX / window.innerWidth,
+                        y: e.clientY / window.innerHeight
+                    },
+                    colors: ['#ff4d6d', '#ff8fa3']
+                });
+            }
+        });
     </script>
 </body>
 
