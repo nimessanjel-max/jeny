@@ -458,7 +458,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 25%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
             display: none;
@@ -595,6 +595,49 @@
             right: 5%;
             animation-delay: 3s;
         }
+
+        /* 💌 Plain Text To-Do Card */
+        .todo-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(14px);
+            border-radius: 22px;
+            padding: 26px 30px;
+            width: 60%;
+            margin: 35px auto;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 1s ease;
+        }
+
+        .todo-card h2 {
+            font-family: 'Playfair Display', serif;
+            color: #c9184a;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        /* List */
+        .todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .todo-list li {
+            color: #7a1631;
+            font-size: 0.95rem;
+            padding: 10px 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect */
+        .todo-list li:hover {
+            background: rgba(255, 255, 255, 0.45);
+            transform: translateX(6px);
+        }
+
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -806,6 +849,24 @@
                 <p id="modalDesc"></p>
             </div>
         </div>
+    </div>
+
+    <div class="todo-card">
+        <h2>💗 To-do list</h2>
+
+        <ul class="todo-list">
+            <li>MEEEEETTTTTTTT</li>
+            <li>Give jeny flowers chocolates gifts and everythingggg</li>
+            <li>HUGGGG</li>
+            <li>KISSSSSSS</li>
+            <li>OH AHHH HEHEH🤭🤭</li>
+            <li>go on dates</li>
+            <li>video call weakie🙄🙄 </li>
+            <li>pluck jeny trees</li>
+            <li>to find out the biggest mistery in the history: </li>
+            <li>does jeny trim buttie???</li>
+            <li>and do everythingggggggg hehhehe</li>
+        </ul>
     </div>
 
     <script>
