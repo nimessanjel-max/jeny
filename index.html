@@ -365,6 +365,33 @@
             opacity: 0;
         }
     }
+
+    /* 🌹 Multiple floating roses */
+    .floating-rose {
+        position: fixed;
+        bottom: -120px;
+        font-size: 5rem;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 9999;
+        animation: floatRose 4s ease forwards;
+    }
+
+    @keyframes floatRose {
+        0% {
+            transform: translateY(0) scale(0.5) rotate(-20deg);
+            opacity: 0;
+        }
+
+        40% {
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(-70vh) scale(1.1) rotate(20deg);
+            opacity: 0;
+        }
+    }
 </style>
 
 <body class="container-fluid">
@@ -478,13 +505,35 @@
             noText.style.display = "inline";
         }
 
+
+        function createRose() {
+            const rose = document.createElement("div");
+            rose.className = "floating-rose";
+            rose.innerText = "🌹";
+
+            // Random horizontal position
+            const x = Math.random() * window.innerWidth;
+            rose.style.left = `${x}px`;
+
+            // Random animation delay
+            rose.style.animationDelay = `${Math.random()}s`;
+
+            document.body.appendChild(rose);
+
+            // Remove after animation
+            setTimeout(() => {
+                rose.remove();
+            }, 4000);
+        }
+
         function yesClick() {
-            const rose = document.getElementById("rose-container");
 
-            // Show rose
-            rose.classList.add("active");
+            // Create multiple roses
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createRose, i * 250);
+            }
 
-            // Confetti burst
+            // Big confetti burst 🎉
             confetti({
                 particleCount: 400,
                 spread: 120,
@@ -495,13 +544,15 @@
             // Fade page
             setTimeout(() => {
                 document.body.classList.add("fade-out");
-            }, 1800);
+            }, 2500);
 
             // Redirect
             setTimeout(() => {
                 window.location.href = "public/jeny.html";
-            }, 2600);
+            }, 4000);
         }
+
+
 
     </script>
 </body>

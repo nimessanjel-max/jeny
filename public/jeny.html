@@ -596,6 +596,82 @@
             animation-delay: 3s;
         }
 
+        .text-box-area {
+            max-width: 850px;
+            margin: 35px auto 0;
+            padding: 26px 30px;
+            margin-top: 50px;
+
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+
+            border-radius: 22px;
+            box-shadow: 0 20px 45px rgba(201, 24, 74, 0.2);
+
+            animation: fadeIn 1s ease forwards;
+            text-align: center;
+        }
+
+        /* label */
+        .wish-label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #c9184a;
+        }
+
+        /* textarea */
+        .wish-input {
+            width: 100%;
+            resize: none;
+
+            padding: 16px 18px;
+            border-radius: 16px;
+
+            border: 2px solid rgba(255, 77, 109, 0.25);
+            background: rgba(255, 255, 255, 0.95);
+
+            font-size: 1.05rem;
+            color: #7a1f35;
+            outline: none;
+
+            transition: all 0.3s ease;
+        }
+
+        /* focus effect */
+        .wish-input:focus {
+            border-color: #ff4d6d;
+            box-shadow: 0 0 0 4px rgba(255, 77, 109, 0.2);
+        }
+
+        /* placeholder */
+        .wish-input::placeholder {
+            color: rgba(201, 24, 74, 0.45);
+        }
+
+        /* hint text */
+        .wish-hint {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(201, 24, 74, 0.6);
+        }
+
+        /* mobile polish */
+        @media (max-width: 576px) {
+            .text-box-area {
+                margin: 25px 15px 0;
+                padding: 22px;
+            }
+
+            .wish-input {
+                font-size: 1rem;
+            }
+        }
+
+
+
         /* 💌 Plain Text To-Do Card */
         .todo-card {
             background: rgba(255, 255, 255, 0.25);
@@ -720,6 +796,74 @@
             .close-modal {
                 top: -25px;
                 font-size: 1.8rem;
+            }
+        }
+
+        /* 📸 Clean Photo Collection */
+        .scattered-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #fff0f3, #ffe5ec);
+            text-align: center;
+        }
+
+        .scattered-title {
+            font-size: 2.7rem;
+            color: #c9184a;
+            margin-bottom: 50px;
+        }
+
+        .scattered-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .scattered-photo {
+            border-radius: 18px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            transform: rotate(var(--rot));
+        }
+
+        .scattered-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .scattered-photo:hover {
+            transform: rotate(0deg) scale(1.07);
+            box-shadow: 0 22px 45px rgba(255, 77, 109, 0.3);
+        }
+
+        /* soft pin */
+        .scattered-photo::before {
+            content: "🤍";
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .scattered-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .scattered-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+
+            .scattered-photo {
+                transform: rotate(0deg);
             }
         }
     </style>
@@ -868,6 +1012,90 @@
             <li>and do everythingggggggg hehhehe</li>
         </ul>
     </div>
+
+
+    <div class="text-box-area">
+        <label class="wish-label">Write a wish here hehe</label>
+
+        <textarea class="wish-input" placeholder="Not like fuck you🙄🙄" rows="4"></textarea>
+
+        <small class="wish-hint">
+            (DONT BE WEIRD MONKEYYYYY🙄🙄)
+        </small>
+    </div>
+
+    <section class="scattered-section">
+        <h2 class="scattered-title">Remember i sent these few days back??</h2>
+
+        <div class="scattered-gallery">
+
+            <div class="scattered-photo" style="top:5%; left:10%; --rot:-8deg;">
+                <img src="./images/this1.PNG">
+            </div>
+
+            <div class="scattered-photo" style="top:15%; left:35%; --rot:6deg;">
+                <img src="./images/this2.JPEG">
+            </div>
+
+            <div class="scattered-photo" style="top:8%; right:8%; --rot:-4deg;">
+                <img src="./images/this3.JPEG">
+            </div>
+
+            <div class="scattered-photo" style="top:35%; left:5%; --rot:10deg;">
+                <img src="./images/this4.PNG">
+            </div>
+
+            <div class="scattered-photo" style="top:40%; left:30%; --rot:-6deg;">
+                <img src="./images/this5.PNG">
+            </div>
+
+            <div class="scattered-photo" style="top:32%; right:12%; --rot:8deg;">
+                <img src="./images/this6.PNG">
+            </div>
+
+            <div class="scattered-photo" style="bottom:25%; left:8%; --rot:-10deg;">
+                <img src="./images/this15.JPEG">
+            </div>
+
+            <div class="scattered-photo" style="bottom:20%; left:35%; --rot:5deg;">
+                <img src="./images/this8.PNG">
+            </div>
+
+            <div class="scattered-photo" style="bottom:28%; right:15%; --rot:-7deg;">
+                <img src="./images/this9.PNG">
+            </div>
+
+            <div class="scattered-photo" style="bottom:5%; left:18%; --rot:6deg;">
+                <img src="./images/this10.PNG">
+            </div>
+
+            <div class="scattered-photo" style="bottom:5%; left:45%; --rot:-4deg;">
+                <img src="./images/this11.JPEG">
+            </div>
+
+            <div class="scattered-photo" style="bottom:5%; right:18%; --rot:9deg;">
+                <img src="./images/this12.PNG">
+            </div>
+
+            <div class="scattered-photo" style="bottom:5%; right:28%; --rot:-9deg;">
+                <img src="./images/this13.PNG">
+            </div>
+
+            <div class="scattered-photo" style="bottom:5%; right:14%; --rot:9deg;">
+                <img src="./images/this14.JPEG">
+            </div>
+
+            <div class="scattered-photo" style="bottom:5%; right:0%; --rot:-9deg;">
+                <img src="./images/this7.PNG">
+            </div>
+
+            <div class="scattered-photo" style="bottom:5%; right:0%; --rot:9deg;">
+                <img src="./images/this15.JPEG">
+            </div>
+
+        </div>
+    </section>
+
 
     <script>
         // Enhanced confetti function
