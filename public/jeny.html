@@ -104,10 +104,46 @@
             }
         }
 
+        @keyframes bounce-in {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-100px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         .intro {
             min-height: 100vh;
             padding: 40px 20px;
-            background: linear-gradient(135deg, #ffd6e0 0%, #ffb3c6 100%);
+            background: linear-gradient(135deg, #ff6b9d, #ffc3a0, #ff6b9d, #ffc3a0);
+            background-size: 400% 400%;
+            animation: gradient-shift 8s ease infinite;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -117,12 +153,23 @@
             text-align: center;
         }
 
+        .intro::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2), transparent 70%);
+            pointer-events: none;
+        }
+
         .intro h1 {
             color: #c9184a;
             text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.5);
             font-size: 4rem;
             margin-bottom: 1rem;
-            animation: fadeIn 1s ease-out;
+            animation: bounce-in 1s ease-out;
             font-weight: bold;
         }
 
@@ -639,6 +686,33 @@
             transition: all 0.3s ease;
         }
 
+        .btn-wish {
+            background: rgba(255, 255, 255, 0.9);
+            color: #ff4d6d;
+            border: 2px solid #ff4d6d;
+
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out 1.5s both;
+            box-shadow: 0 5px 15px rgba(241, 134, 152, 0.4);
+            margin-top: 20px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .btn-wish:hover {
+            background: #ff4d6d;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.3);
+        }
+
         /* focus effect */
         .wish-input:focus {
             border-color: #ff4d6d;
@@ -700,18 +774,21 @@
 
         .todo-list li {
             color: #7a1631;
-            font-size: 0.95rem;
-            padding: 10px 12px;
-            border-radius: 12px;
-            margin-bottom: 8px;
-            background: rgba(255, 255, 255, 0.3);
+            font-size: 1.05rem;
+            padding: 14px 18px;
+            border-radius: 15px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.4);
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         /* Hover effect */
+
         .todo-list li:hover {
-            background: rgba(255, 255, 255, 0.45);
-            transform: translateX(6px);
+            background: rgba(255, 255, 255, 0.6);
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
 
@@ -847,6 +924,20 @@
             top: 10px;
             right: 12px;
             font-size: 18px;
+        }
+
+        #my-msg {
+            padding: 30px;
+
+        }
+
+        #my-msg p {
+            padding: 20px;
+            color: #7a1631;
+            font-size: 18px;
+            border: 1px solid #7a1631;
+            border-radius: 20px;
+            box-shadow: 0 22px 45px rgba(255, 77, 109, 0.5);
         }
 
         /* Responsive */
@@ -1017,8 +1108,9 @@
     <div class="text-box-area">
         <label class="wish-label">Write a wish here hehe</label>
 
-        <textarea class="wish-input" placeholder="Not like fuck you🙄🙄" rows="4"></textarea>
-
+        <textarea class="wish-input" placeholder="Not like (to fuck you🙄🙄)" rows="4" id="wish"></textarea>
+        <button class="btn btn-wish" onclick="sendWish()">Send your wish to nimes heheh</button>
+        <p id="status" style="margin-top:10px;color:#c9184a;font-weight:600;"></p>
         <small class="wish-hint">
             (DONT BE WEIRD MONKEYYYYY🙄🙄)
         </small>
@@ -1094,6 +1186,32 @@
             </div>
 
         </div>
+    </section>
+
+    <section id="my-msg">
+        <p>Thank you bbu..iloveyousomuchhh thank you for everything youve done for me..i know there are so many things
+            left for us to do..
+            we still need to meet and do everythingg we've wanted and all and i really really want to be able to do it
+            fast like reallyyy fastt
+            ...i want us to meet fast fast and HEHEH🤭🤭(not noty ofc)...thank you for being wwith me...i know i've been
+            so hmm at times and all..
+            i know ive hmm you so much at times and im really a bobo but thank you for still choosing to be with me..you
+            make me want to be better for you if not for me..
+            i want to be good enough for you...thank you for sacrificing so many things for me bbu..im really grateful
+            for everything..from you texting wtf men to
+            keeping up with my boboness and still being with me..im reslly thankful..ill be better better i know im
+            still a bobo at times but i try not to hmm and all..im not
+            so hm hm likee back then and ill try to improve more..lets be together always okay? be with me always..been
+            3 years 6 months hehw lets wish until like umn 10000000000
+            years hehw..jeny gonna be lola by then but ill stjll love you so muchhhhh..ill always love you bubu..you get
+            sad and worried and scard i know and i totslly understand
+            but you really dont have to be...im just yours swesr swear..i love you i like you i likee eeverythingg about
+            you and of you promise...be with me okay? and dont be wormie so much
+            bobo🙄🙄ehehe mwamwamwmwamwamwa iloveyoisomuchhhhh thank you...you csn go back to talking to your hubby now
+            the psge ends here hehw
+            <br><br>
+            -your bobo monkeyyy
+        </p>
     </section>
 
 
@@ -1246,6 +1364,39 @@
                 closeModal();
             }
         });
+
+
+
+
+
+        function sendWish() {
+            const wish = document.getElementById("wish").value.trim();
+            const status = document.getElementById("status");
+
+            if (!wish) {
+                status.textContent = "Write something first 🥺";
+                return;
+            }
+
+            status.textContent = "Sending... 💌";
+
+            fetch("https://script.google.com/macros/s/AKfycbxvjXCXTx0zjI5NP0lt5iREIibsNfiIe8BkpmcDQh6strmGUr-HzzE2aYOBP397aHRu/exec", {
+                method: "POST",
+                body: new URLSearchParams({
+                    wish: wish
+                })
+            })
+                .then(res => res.text())
+                .then(() => {
+                    status.textContent = "Wish saved ✨";
+                    document.getElementById("wish").value = "";
+                })
+                .catch(() => {
+                    status.textContent = "Something went wrong 😭";
+                });
+        }
+
+
     </script>
 </body>
 
