@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        
+
 
         @keyframes heart-rotate {
             0% {
@@ -1100,6 +1100,51 @@
                 transform: translateY(0) rotate(0deg);
             }
         }
+
+        @keyframes button-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 105, 180, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
+            }
+        }
+
+        .end-sec {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #end-btn {
+            background: linear-gradient(45deg, #ff4d6d, #ff8fa3);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(241, 134, 152, 0.4);
+            margin-top: 20px;
+            z-index: 2;
+            position: relative;
+            animation: button-pulse 1s infinite;
+        }
+
+        #end-text {
+            display: none;
+            color: rgb(230, 69, 96);
+            font-size: 17px;
+            display: none;
+        }
     </style>
 </head>
 
@@ -1373,8 +1418,14 @@
             <br><br>
             -your bobo monkeyyy
         </p>
+
+
     </section>
 
+    <section class="end-sec">
+        <button id="end-btn" class="btn" onclick="endBtnClick()">Surprise</button>
+        <p id="end-text">Nothing duhhh</p>
+    </section>
 
     <script>
         // Enhanced confetti function
@@ -1583,7 +1634,10 @@
         // Spawn petals every 400ms
         setInterval(createPetal, 400);
 
-
+        function endBtnClick() {
+            document.getElementById("end-text").style.display = "block";
+            document.getElementById("end-btn").style.display = "none";
+        }
 
     </script>
 </body>
