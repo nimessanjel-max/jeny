@@ -28,6 +28,8 @@
             overflow-x: hidden;
         }
 
+        
+
         @keyframes heart-rotate {
             0% {
                 transform: rotate(var(--start-deg));
@@ -171,7 +173,12 @@
             margin-bottom: 1rem;
             animation: bounce-in 1s ease-out;
             font-weight: bold;
+            text-shadow:
+                0 0 10px rgba(255, 182, 193, 0.8),
+                0 0 20px rgba(255, 105, 180, 0.6),
+                0 0 30px rgba(255, 20, 147, 0.4);
         }
+
 
         .intro h1:nth-child(1) {
             animation-delay: 0.2s;
@@ -915,6 +922,9 @@
         .scattered-photo:hover {
             transform: rotate(0deg) scale(1.07);
             box-shadow: 0 22px 45px rgba(255, 77, 109, 0.3);
+
+
+
         }
 
         /* soft pin */
@@ -957,6 +967,139 @@
                 transform: rotate(0deg);
             }
         }
+
+        /* 🌸 Floating Flowers */
+        /* 🌸 Floating Flowers – More + Softer + Layered */
+        .floating-flowers span {
+            position: absolute;
+            font-size: 45px;
+            opacity: 0.4;
+            animation: float 7s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatFlowers 6s ease-in-out infinite;
+        }
+
+        /* Left side cluster */
+        .floating-flowers span:nth-child(1) {
+            top: 8%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-flowers span:nth-child(2) {
+            top: 18%;
+            left: 12%;
+            animation-delay: 1s;
+        }
+
+        .floating-flowers span:nth-child(3) {
+            top: 28%;
+            left: 4%;
+            animation-delay: 2s;
+        }
+
+        /* Right side cluster */
+        .floating-flowers span:nth-child(4) {
+            top: 12%;
+            right: 6%;
+            animation-delay: 0.5s;
+        }
+
+        .floating-flowers span:nth-child(5) {
+            top: 30%;
+            right: 12%;
+            animation-delay: 1.5s;
+        }
+
+        .floating-flowers span:nth-child(6) {
+            top: 45%;
+            right: 4%;
+            animation-delay: 2.5s;
+        }
+
+        /* Bottom soft layer */
+        .floating-flowers span:nth-child(7) {
+            bottom: 15%;
+            left: 10%;
+            animation-delay: 1s;
+        }
+
+        .floating-flowers span:nth-child(8) {
+            bottom: 10%;
+            right: 8%;
+            animation-delay: 2s;
+        }
+
+        /* Center subtle */
+        .floating-flowers span:nth-child(9) {
+            top: 50%;
+            left: 50%;
+            animation-delay: 3s;
+            transform: translateX(-50%);
+        }
+
+        .floating-flowers span:nth-child(10) {
+            top: 65%;
+            left: 35%;
+            animation-delay: 2s;
+        }
+
+        .floating-flowers span:nth-child(11) {
+            top: 70%;
+            right: 35%;
+            animation-delay: 1.2s;
+        }
+
+
+        /* 🌸 Falling Petals */
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .petal {
+            position: absolute;
+            /* was fixed before */
+            top: -10px;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 0;
+            animation: fall linear infinite;
+        }
+
+        @keyframes floatFlowers {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+
+            50% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            75% {
+                transform: translateY(15px) rotate(-5deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
     </style>
 </head>
 
@@ -987,6 +1130,22 @@
             <span class="bi bi-heart-fill"></span>
             <span class="bi bi-heart-fill"></span>
         </div>
+
+        <div class="floating-flowers">
+            <span>🌸</span>
+            <span>🌷</span>
+            <span>🌹</span>
+            <span>🌺</span>
+            <span>🌼</span>
+            <span>💮</span>
+            <span>🌻</span>
+            <span>🌷</span>
+            <span>🌸</span>
+            <span>🌺</span>
+            <span>🌼</span>
+        </div>
+
+
     </section>
 
     <section class="memories-section">
@@ -1073,6 +1232,8 @@
             <div class="author">-the great jeny</div>
         </div>
     </section>
+
+
 
     <!-- Modal for enlarged photo -->
     <div id="photoModal" class="photo-modal">
@@ -1395,6 +1556,33 @@
                     status.textContent = "Something went wrong 😭";
                 });
         }
+
+        // 🌸 Create Falling Petals
+        // 🌸 Falling petals only inside intro
+        function createPetal() {
+            const intro = document.querySelector('.intro');
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+
+            // Random flower emoji
+            petal.innerHTML = ['🌸', '🌷', '🌺', '🌼', '💮'][Math.floor(Math.random() * 5)];
+
+            // Random horizontal position
+            petal.style.left = Math.random() * 100 + '%';
+            // Random animation duration
+            petal.style.animationDuration = (4 + Math.random() * 4) + 's';
+            // Random size
+            petal.style.fontSize = (15 + Math.random() * 15) + 'px';
+
+            intro.appendChild(petal);
+
+            // Remove petal after animation ends
+            setTimeout(() => petal.remove(), 8000);
+        }
+
+        // Spawn petals every 400ms
+        setInterval(createPetal, 400);
+
 
 
     </script>
