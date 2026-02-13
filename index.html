@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fixed Bootstrap Icons link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 
@@ -79,7 +82,7 @@
 
     body {
         background: linear-gradient(135deg, #ffd6e0 0%, #ffb3c6 100%);
-        min-height: 100vh;
+        height: 100vh;
         overflow-x: hidden;
     }
 
@@ -99,27 +102,44 @@
     .intro h1 {
         color: #c9184a;
         text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.5);
-        font-size: 3rem;
+        font-size: 4rem;
         margin-bottom: 1rem;
         animation: fadeIn 1s ease-out;
         font-weight: bold;
     }
 
-    /* MOBILE TEXT SIZE */
-    @media (max-width: 768px) {
-        .intro h1 {
-            font-size: 2.2rem;
-        }
+    .intro h1:nth-child(1) {
+        animation-delay: 0.2s;
     }
+
+    .intro h1:nth-child(2) {
+        animation-delay: 0.4s;
+    }
+
+    .intro h1:nth-child(3) {
+        animation-delay: 0.6s;
+    }
+
+    .intro h1:nth-child(4) {
+        animation-delay: 0.6s;
+    }
+
 
     .intro-icons span {
         color: rgba(201, 24, 74, 0.386);
         position: absolute;
-        animation: float 4s ease-in-out infinite;
+        animation: float 3s ease-in-out infinite;
         z-index: 1;
+        cursor: pointer;
     }
 
-    /* Removed hover scaling (not useful on mobile) */
+    .intro-icons span:hover {
+        color: rgba(201, 24, 74, 1);
+        transform: scale(1.2);
+        z-index: 10;
+    }
+
+
 
     .intro-icons span:nth-child(1) {
         top: 10%;
@@ -127,6 +147,7 @@
         font-size: 2rem;
         --start-deg: -30deg;
         --end-deg: 10deg;
+        animation-delay: 0s;
     }
 
     .intro-icons span:nth-child(2) {
@@ -135,6 +156,7 @@
         font-size: 3.5rem;
         --start-deg: -20deg;
         --end-deg: 20deg;
+        animation-delay: 0.5s;
     }
 
     .intro-icons span:nth-child(3) {
@@ -143,6 +165,7 @@
         font-size: 4rem;
         --start-deg: 10deg;
         --end-deg: 40deg;
+        animation-delay: 1s;
     }
 
     .intro-icons span:nth-child(4) {
@@ -151,6 +174,7 @@
         font-size: 2.8rem;
         --start-deg: 40deg;
         --end-deg: 80deg;
+        animation-delay: 1.5s;
     }
 
     .intro-icons span:nth-child(5) {
@@ -159,6 +183,7 @@
         font-size: 5rem;
         --start-deg: -10deg;
         --end-deg: 20deg;
+        animation-delay: 2s;
     }
 
     .intro-icons span:nth-child(6) {
@@ -167,6 +192,7 @@
         font-size: 3.2rem;
         --start-deg: 30deg;
         --end-deg: 60deg;
+        animation-delay: 2.5s;
     }
 
     .intro-icons span:nth-child(7) {
@@ -175,6 +201,7 @@
         font-size: 4.5rem;
         --start-deg: -40deg;
         --end-deg: -10deg;
+        animation-delay: 3s;
     }
 
     .intro-icons span:nth-child(8) {
@@ -183,6 +210,7 @@
         font-size: 2.5rem;
         --start-deg: -15deg;
         --end-deg: 15deg;
+        animation-delay: 3.5s;
     }
 
     .intro-icons span:nth-child(9) {
@@ -191,6 +219,7 @@
         font-size: 3.8rem;
         --start-deg: 20deg;
         --end-deg: 50deg;
+        animation-delay: 4s;
     }
 
     .intro-icons span:nth-child(10) {
@@ -199,6 +228,7 @@
         font-size: 2.2rem;
         --start-deg: 5deg;
         --end-deg: 35deg;
+        animation-delay: 4.5s;
     }
 
     .intro-icons span:nth-child(11) {
@@ -207,6 +237,7 @@
         font-size: 4.2rem;
         --start-deg: -25deg;
         --end-deg: 5deg;
+        animation-delay: 5s;
     }
 
     .intro-icons span:nth-child(12) {
@@ -215,6 +246,7 @@
         font-size: 3rem;
         --start-deg: -50deg;
         --end-deg: -20deg;
+        animation-delay: 5.5s;
     }
 
     .intro-icons span:nth-child(13) {
@@ -223,35 +255,61 @@
         font-size: 4.8rem;
         --start-deg: 25deg;
         --end-deg: 55deg;
+        animation-delay: 6s;
     }
 
+
+
     .yes-btn {
+
         background: linear-gradient(45deg, #ff4d6d, #ff8fa3);
-        padding: 18px 50px;
+        padding: 15px 40px;
         border: none;
         border-radius: 50px;
         color: white;
         font-size: 1.2rem;
         font-weight: bold;
         cursor: pointer;
-        animation: button-pulse 1.5s infinite;
+        transition: all 0.3s ease;
+        animation: fadeIn 1s ease-out 1.5s both;
         box-shadow: 0 5px 15px rgba(241, 134, 152, 0.4);
         margin-top: 20px;
         z-index: 2;
+        position: relative;
+        animation: button-pulse 1s infinite;
     }
 
     .no-btn {
+
         background: rgba(255, 255, 255, 0.9);
         color: #ff4d6d;
         border: 2px solid #ff4d6d;
-        padding: 18px 50px;
+
+        padding: 15px 40px;
+        border: none;
         border-radius: 50px;
+
         font-size: 1.2rem;
         font-weight: bold;
         cursor: pointer;
+        transition: all 0.3s ease;
+        animation: fadeIn 1s ease-out 1.5s both;
         box-shadow: 0 5px 15px rgba(241, 134, 152, 0.4);
         margin-top: 20px;
         z-index: 2;
+        position: relative;
+    }
+
+    .yes-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(255, 77, 109, 0.4);
+    }
+
+    .no-btn:hover {
+        background: #ff4d6d;
+        color: white;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(255, 77, 109, 0.3);
     }
 
     #no-text {
@@ -260,6 +318,7 @@
         display: none;
     }
 
+    /* 🌹 Rose animation (emoji based) */
     #rose-container {
         position: fixed;
         bottom: -150px;
@@ -271,6 +330,43 @@
         pointer-events: none;
     }
 
+    /* Active state */
+    #rose-container.active {
+        animation: roseUp 4s ease forwards;
+    }
+
+    @keyframes roseUp {
+        0% {
+            bottom: -150px;
+            opacity: 0;
+            transform: translateX(-50%) scale(0.4) rotate(-15deg);
+        }
+
+        60% {
+            bottom: 45%;
+            opacity: 1;
+            transform: translateX(-50%) scale(1.2) rotate(10deg);
+        }
+
+        100% {
+            bottom: 38%;
+            opacity: 1;
+            transform: translateX(-50%) scale(1) rotate(0deg);
+        }
+    }
+
+    /* Page fade */
+    .fade-out {
+        animation: fadeOut 1.2s ease forwards;
+    }
+
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+        }
+    }
+
+    /* 🌹 Multiple floating roses */
     .floating-rose {
         position: fixed;
         bottom: -120px;
@@ -296,16 +392,6 @@
             opacity: 0;
         }
     }
-
-    .fade-out {
-        animation: fadeOut 1.2s ease forwards;
-    }
-
-    @keyframes fadeOut {
-        to {
-            opacity: 0;
-        }
-    }
 </style>
 
 <body class="container-fluid">
@@ -316,10 +402,12 @@
         <h1>Jeny??</h1>
 
         <div id="btn">
-            <button class="btn yes-btn" onclick="yesClick()">YESSS🌹🌹</button>
+            <button class="btn yes-btn"><a style="text-decoration: none; color: white;"
+                    onclick="yesClick()">YESSS🌹🌹</a></button>
             <button class="btn no-btn" id="no-btn" onclick="noClick()">No🙄🙄</button>
             <p id="no-text">You cant say no duhhhhh🙄🙄</p>
         </div>
+
 
         <div class="intro-icons">
             <span class="bi bi-heart-fill"></span>
@@ -338,6 +426,11 @@
         </div>
     </section>
 
+
+    <!-- Rose Animation -->
+    <div id="rose-container">🌹</div>
+
+
     <script>
         function fireConfetti() {
             const duration = 4 * 1000;
@@ -352,16 +445,18 @@
                     particleCount: 60,
                     spread: 360,
                     origin: { x: Math.random(), y: Math.random() - 0.2 },
-                    colors: ['#ff4d6d', '#ff8fa3', '#ffffff']
+                    colors: ['#ff4d6d', '#ff9aa2', '#ffffff']
                 });
             }, 300);
         }
+
+
 
         // Run confetti when page loads
         window.onload = function () {
             fireConfetti();
 
-            // Tap hearts for mini confetti
+            // Add click event to hearts for more interaction
             document.querySelectorAll('.intro-icons span').forEach(heart => {
                 heart.addEventListener('click', function () {
                     const rect = this.getBoundingClientRect();
@@ -378,9 +473,9 @@
             });
         };
 
-        // Small random confetti on random taps
+        // Additional confetti on click anywhere
         document.addEventListener('click', function (e) {
-            if (Math.random() > 0.8) {
+            if (Math.random() > 0.8) { // 20% chance on any click
                 confetti({
                     particleCount: 15,
                     spread: 50,
@@ -393,47 +488,52 @@
             }
         });
 
+
         function noClick() {
             const btn = document.getElementById("no-btn");
-            const noText = document.getElementById("no-text");
 
-            const padding = 20;
-            const maxTop = window.innerHeight - btn.offsetHeight - padding;
-            const maxLeft = window.innerWidth - btn.offsetWidth - padding;
+            // Calculate random positions within the screen bounds
+            const randomTop = Math.floor(Math.random() * (window.innerHeight - btn.offsetHeight));
+            const randomLeft = Math.floor(Math.random() * (window.innerWidth - btn.offsetWidth));
 
-            const randomTop = Math.random() * maxTop;
-            const randomLeft = Math.random() * maxLeft;
-
-            btn.style.position = "fixed";
+            // Apply absolute positioning to move it anywhere
+            btn.style.position = "absolute";
             btn.style.top = randomTop + "px";
             btn.style.left = randomLeft + "px";
 
-            noText.style.display = "block";
-
-            if (navigator.vibrate) {
-                navigator.vibrate(100);
-            }
+            var noText = document.getElementById("no-text");
+            noText.style.display = "inline";
         }
+
 
         function createRose() {
             const rose = document.createElement("div");
             rose.className = "floating-rose";
             rose.innerText = "🌹";
-            rose.style.left = Math.random() * window.innerWidth + "px";
+
+            // Random horizontal position
+            const x = Math.random() * window.innerWidth;
+            rose.style.left = `${x}px`;
+
+            // Random animation delay
+            rose.style.animationDelay = `${Math.random()}s`;
 
             document.body.appendChild(rose);
 
+            // Remove after animation
             setTimeout(() => {
                 rose.remove();
             }, 4000);
         }
 
         function yesClick() {
+
+            // Create multiple roses
             for (let i = 0; i < 20; i++) {
                 setTimeout(createRose, i * 250);
             }
 
-            // BIG celebration confetti
+            // Big confetti burst 🎉
             confetti({
                 particleCount: 400,
                 spread: 120,
@@ -441,16 +541,20 @@
                 colors: ['#ff4d6d', '#ff8fa3', '#ffffff']
             });
 
+            // Fade page
             setTimeout(() => {
                 document.body.classList.add("fade-out");
             }, 2500);
 
+            // Redirect
             setTimeout(() => {
                 window.location.href = "public/jeny.html";
             }, 4000);
         }
-    </script>
 
+
+
+    </script>
 </body>
 
 </html>
